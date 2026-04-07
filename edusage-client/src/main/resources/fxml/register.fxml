@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.edusage.client.controller.RegisterController"
+      alignment="CENTER" spacing="16"
+      style="-fx-padding: 50; -fx-background-color: #F2F4F7;">
+
+    <Label text="EduSage FX — Register" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+
+    <VBox spacing="10" maxWidth="360">
+        <Label text="Full Name"/>
+        <TextField fx:id="nameField" promptText="Enter your full name"/>
+
+        <Label text="Email"/>
+        <TextField fx:id="emailField" promptText="Enter your email"/>
+
+        <Label text="Password"/>
+        <PasswordField fx:id="passwordField" promptText="Create a password"/>
+
+        <Label text="Role"/>
+        <ComboBox fx:id="roleCombo" promptText="Select role" maxWidth="360"/>
+
+        <Label fx:id="extraLabel" text="Roll No" visible="false" managed="false"/>
+        <TextField fx:id="extraField" promptText="Roll No / Department" visible="false" managed="false"/>
+
+        <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false"/>
+
+        <Button text="Register" onAction="#handleRegister"
+                style="-fx-background-color: #1A56A0; -fx-text-fill: white;
+                       -fx-font-size: 14; -fx-pref-width: 360; -fx-pref-height: 40;"/>
+
+        <Button text="Back to Login" onAction="#goToLogin"
+                style="-fx-background-color: transparent; -fx-text-fill: #1A56A0;"/>
+    </VBox>
+</VBox>

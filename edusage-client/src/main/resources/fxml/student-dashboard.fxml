@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.edusage.client.controller.StudentDashController">
+
+    <!-- TOP NAV -->
+    <top>
+        <HBox style="-fx-background-color: #1A56A0; -fx-padding: 16;" alignment="CENTER_LEFT" spacing="20">
+            <Label text="EduSage FX" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+            <Label fx:id="welcomeLabel" style="-fx-text-fill: #D6E4F7; -fx-font-size: 14;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="riskBadge" style="-fx-padding: 6 14; -fx-background-radius: 12;"/>
+            <Button text="Download Report" onAction="#handleDownloadReport"
+                    style="-fx-background-color: #1E7B45; -fx-text-fill: white;"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: #E07B20; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20" style="-fx-padding: 24;">
+
+                <!-- STATS ROW -->
+                <HBox spacing="16">
+                    <VBox style="-fx-background-color: #D6E4F7; -fx-padding: 20; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                        <Label text="Overall Average" style="-fx-text-fill: #6B7280;"/>
+                        <Label fx:id="avgLabel" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #D0EFEF; -fx-padding: 20; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                        <Label text="Moving Average (last 5)" style="-fx-text-fill: #6B7280;"/>
+                        <Label fx:id="movingAvgLabel" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #0D7377;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #FDE9D4; -fx-padding: 20; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                        <Label text="Attendance" style="-fx-text-fill: #6B7280;"/>
+                        <Label fx:id="attendanceLabel" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #E07B20;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #D4EFE0; -fx-padding: 20; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                        <Label text="Improvement Rate" style="-fx-text-fill: #6B7280;"/>
+                        <Label fx:id="improvementLabel" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1E7B45;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- CHARTS ROW -->
+                <HBox spacing="16">
+                    <LineChart fx:id="scoreLineChart" HBox.hgrow="ALWAYS" prefHeight="280">
+                        <xAxis><CategoryAxis label="Date"/></xAxis>
+                        <yAxis><NumberAxis label="Score %" lowerBound="0" upperBound="100" tickUnit="20"/></yAxis>
+                    </LineChart>
+                    <BarChart fx:id="subjectBarChart" HBox.hgrow="ALWAYS" prefHeight="280">
+                        <xAxis><CategoryAxis label="Subject"/></xAxis>
+                        <yAxis><NumberAxis label="Average %" lowerBound="0" upperBound="100" tickUnit="20"/></yAxis>
+                    </BarChart>
+                </HBox>
+
+                <!-- RECOMMENDATIONS -->
+                <Label text="Recommendations" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <VBox fx:id="recommendationsBox" spacing="8"/>
+
+                <!-- AVAILABLE QUIZZES -->
+                <Label text="Available Quizzes" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <Label text="Double-click a quiz to take it" style="-fx-text-fill: #6B7280; -fx-font-size: 12;"/>
+                <ListView fx:id="quizListView" prefHeight="200"/>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

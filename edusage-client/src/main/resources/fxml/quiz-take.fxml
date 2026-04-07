@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.edusage.client.controller.QuizTakeController">
+
+    <!-- TOP -->
+    <top>
+        <HBox style="-fx-background-color: #1A56A0; -fx-padding: 16;" alignment="CENTER_LEFT" spacing="20">
+            <Button text="← Back" onAction="#goBackToDashboard"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14;"/>
+            <Label fx:id="quizTitleLabel" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER: scrollable questions -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="questionsBox" spacing="16" style="-fx-padding: 24;"/>
+        </ScrollPane>
+    </center>
+
+    <!-- BOTTOM: result + submit -->
+    <bottom>
+        <VBox spacing="10" style="-fx-padding: 16; -fx-background-color: #F9FAFB; -fx-border-color: #E5E7EB; -fx-border-width: 1 0 0 0;">
+            <Label fx:id="resultLabel" style="-fx-font-size: 14; -fx-text-fill: #374151;"/>
+            <Label fx:id="scoreLabel"  style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+            <Button fx:id="submitButton" text="Submit Quiz" onAction="#handleSubmit"
+                    style="-fx-background-color: #1A56A0; -fx-text-fill: white;
+                           -fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
+        </VBox>
+    </bottom>
+</BorderPane>

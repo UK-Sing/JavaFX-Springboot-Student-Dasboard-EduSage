@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.edusage.client.controller.LoginController"
+      alignment="CENTER" spacing="20"
+      style="-fx-padding: 60; -fx-background-color: #F2F4F7;">
+
+    <Label text="EduSage FX" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+    <Label text="Student Performance Analytics" style="-fx-font-size: 14; -fx-text-fill: #6B7280;"/>
+
+    <VBox spacing="12" maxWidth="360">
+        <Label text="Email"/>
+        <TextField fx:id="emailField" promptText="Enter your email"/>
+
+        <Label text="Password"/>
+        <PasswordField fx:id="passwordField" promptText="Enter your password"/>
+
+        <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false"/>
+
+        <Button text="Login" onAction="#handleLogin"
+                style="-fx-background-color: #1A56A0; -fx-text-fill: white;
+                       -fx-font-size: 14; -fx-pref-width: 360; -fx-pref-height: 40;"/>
+
+        <Button text="Register" onAction="#goToRegister"
+                style="-fx-background-color: transparent; -fx-text-fill: #1A56A0;"/>
+    </VBox>
+</VBox>

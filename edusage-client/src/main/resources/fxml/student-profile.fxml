@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.edusage.client.controller.StudentProfileController">
+
+    <!-- TOP NAV -->
+    <top>
+        <HBox style="-fx-background-color: #1A56A0; -fx-padding: 16;" alignment="CENTER_LEFT" spacing="16">
+            <Button text="← Back" onAction="#handleBack"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14; -fx-border-color: white; -fx-border-radius: 4; -fx-padding: 6 12;"/>
+            <Label text="Student Profile" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="riskBadge" style="-fx-padding: 6 14; -fx-background-radius: 12; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20" style="-fx-padding: 24;">
+
+                <!-- PROFILE HEADER CARD -->
+                <HBox spacing="24" style="-fx-background-color: white; -fx-padding: 24; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);" alignment="CENTER_LEFT">
+                    <VBox alignment="CENTER" spacing="8" minWidth="100">
+                        <ImageView fx:id="photoView" fitWidth="90" fitHeight="90" preserveRatio="true"
+                                   style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.2),6,0,0,2);"/>
+                        <Label fx:id="initialsLabel"
+                               style="-fx-background-color: #1A56A0; -fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold; -fx-min-width: 90; -fx-min-height: 90; -fx-alignment: CENTER; -fx-background-radius: 45;"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label fx:id="nameLabel"    style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+                        <Label fx:id="emailLabel"   style="-fx-text-fill: #6B7280; -fx-font-size: 13;"/>
+                        <HBox spacing="16">
+                            <Label fx:id="rollNoLabel"  style="-fx-background-color: #EEF2FF; -fx-text-fill: #3730A3; -fx-padding: 4 10; -fx-background-radius: 6; -fx-font-size: 12;"/>
+                            <Label fx:id="courseLabel"  style="-fx-background-color: #F0FDF4; -fx-text-fill: #166534; -fx-padding: 4 10; -fx-background-radius: 6; -fx-font-size: 12;"/>
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="8" alignment="CENTER_RIGHT" minWidth="160">
+                        <Label fx:id="creditsLabel" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #E07B20;"/>
+                        <Label text="Credits Earned" style="-fx-text-fill: #6B7280; -fx-font-size: 12;"/>
+                        <Separator/>
+                        <Label fx:id="joinedLabel"   style="-fx-text-fill: #374151; -fx-font-size: 12;"/>
+                        <Label fx:id="durationLabel" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- STATS ROW -->
+                <HBox spacing="16">
+                    <VBox style="-fx-background-color: #D6E4F7; -fx-padding: 18; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Overall Avg" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                        <Label fx:id="avgLabel" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #D0EFEF; -fx-padding: 18; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Moving Avg" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                        <Label fx:id="movingAvgLabel" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #0D7377;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #FDE9D4; -fx-padding: 18; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Attendance" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                        <Label fx:id="attendanceLabel" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #E07B20;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #D4EFE0; -fx-padding: 18; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Improvement" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                        <Label fx:id="improvementLabel" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1E7B45;"/>
+                    </VBox>
+                    <VBox style="-fx-background-color: #EEF2FF; -fx-padding: 18; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Quizzes Taken" style="-fx-text-fill: #6B7280; -fx-font-size: 11;"/>
+                        <Label fx:id="quizzesLabel" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #3730A3;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- SUBJECT AVERAGES -->
+                <VBox style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,1);" spacing="12">
+                    <Label text="Subject Averages" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+                    <VBox fx:id="subjectsBox" spacing="8"/>
+                </VBox>
+
+                <!-- COUNSELLING SECTION -->
+                <VBox style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,1);" spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Label text="Counselling Sessions" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+                        <Label fx:id="sessionCountLabel" style="-fx-background-color: #1A56A0; -fx-text-fill: white; -fx-padding: 2 8; -fx-background-radius: 10; -fx-font-size: 11;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add Session" onAction="#showAddSessionDialog"
+                                style="-fx-background-color: #1A56A0; -fx-text-fill: white; -fx-padding: 6 14; -fx-background-radius: 6;"/>
+                    </HBox>
+                    <VBox fx:id="counsellingBox" spacing="10"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

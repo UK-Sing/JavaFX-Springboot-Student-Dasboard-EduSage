@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.edusage.client.controller.AdminDashController">
+
+    <!-- TOP NAV -->
+    <top>
+        <HBox style="-fx-background-color: #1A2E5A; -fx-padding: 14 20;" alignment="CENTER_LEFT" spacing="18">
+            <Label text="EduSage FX" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Label text="Admin Console" style="-fx-text-fill: #93C5FD; -fx-font-size: 13;"/>
+            <Label fx:id="welcomeLabel" style="-fx-text-fill: #D1D5DB; -fx-font-size: 12;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: #E07B20; -fx-text-fill: white; -fx-padding: 6 16; -fx-background-radius: 6;"/>
+        </HBox>
+    </top>
+
+    <!-- MAIN -->
+    <center>
+        <VBox spacing="0">
+
+            <!-- STATS CARDS -->
+            <HBox spacing="12" style="-fx-background-color: #F8FAFC; -fx-padding: 16 20;">
+                <VBox fx:id="cardStudents"  styleClass="stat-card" style="-fx-background-color: #DBEAFE; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Students" style="-fx-text-fill: #1E40AF; -fx-font-size: 11;"/>
+                    <Label fx:id="statStudents" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1A56A0;" text="—"/>
+                </VBox>
+                <VBox style="-fx-background-color: #D1FAE5; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Teachers" style="-fx-text-fill: #065F46; -fx-font-size: 11;"/>
+                    <Label fx:id="statTeachers" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #065F46;" text="—"/>
+                </VBox>
+                <VBox style="-fx-background-color: #FEF3C7; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Active Users" style="-fx-text-fill: #92400E; -fx-font-size: 11;"/>
+                    <Label fx:id="statActive" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #92400E;" text="—"/>
+                </VBox>
+                <VBox style="-fx-background-color: #FEE2E2; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="At Risk" style="-fx-text-fill: #991B1B; -fx-font-size: 11;"/>
+                    <Label fx:id="statAtRisk" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #991B1B;" text="—"/>
+                </VBox>
+                <VBox style="-fx-background-color: #EDE9FE; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="System Avg" style="-fx-text-fill: #5B21B6; -fx-font-size: 11;"/>
+                    <Label fx:id="statAvg" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #5B21B6;" text="—"/>
+                </VBox>
+                <VBox style="-fx-background-color: #F0FDF4; -fx-padding: 14; -fx-background-radius: 8;" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Total Quizzes" style="-fx-text-fill: #166534; -fx-font-size: 11;"/>
+                    <Label fx:id="statQuizzes" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #166534;" text="—"/>
+                </VBox>
+            </HBox>
+
+            <!-- TABS -->
+            <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS"
+                     style="-fx-padding: 0 16 16 16;">
+
+                <!-- TAB 1: USER MANAGEMENT -->
+                <Tab text="  User Management  ">
+                    <VBox spacing="12" style="-fx-padding: 16 0 0 0;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <TextField fx:id="userSearchField" promptText="Search by name, email or role..."
+                                       prefWidth="320"
+                                       style="-fx-padding: 8; -fx-background-radius: 6; -fx-border-color: #D1D5DB; -fx-border-radius: 6;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="+ Create User" onAction="#showCreateUserDialog"
+                                    style="-fx-background-color: #1A56A0; -fx-text-fill: white; -fx-padding: 8 16; -fx-background-radius: 6;"/>
+                        </HBox>
+                        <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="userIdCol"     text="ID"      prefWidth="55"/>
+                                <TableColumn fx:id="userNameCol"   text="Name"    prefWidth="180"/>
+                                <TableColumn fx:id="userEmailCol"  text="Email"   prefWidth="210"/>
+                                <TableColumn fx:id="userRoleCol"   text="Role"    prefWidth="100"/>
+                                <TableColumn fx:id="userStatusCol" text="Status"  prefWidth="100"/>
+                                <TableColumn fx:id="userJoinedCol" text="Joined"  prefWidth="110"/>
+                                <TableColumn fx:id="userActionsCol" text="Actions" prefWidth="180"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- TAB 2: STUDENT ANALYTICS -->
+                <Tab text="  Student Analytics  ">
+                    <VBox spacing="12" style="-fx-padding: 16 0 0 0;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <TextField fx:id="studentSearchField" promptText="Search by name or roll number..."
+                                       prefWidth="320"
+                                       style="-fx-padding: 8; -fx-background-radius: 6; -fx-border-color: #D1D5DB; -fx-border-radius: 6;"/>
+                            <Label text="Double-click a row to open full profile" style="-fx-text-fill: #9CA3AF; -fx-font-size: 12; -fx-font-style: italic;"/>
+                        </HBox>
+                        <TableView fx:id="studentsTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="stuNameCol"       text="Name"        prefWidth="160"/>
+                                <TableColumn fx:id="stuRollCol"       text="Roll No"     prefWidth="100"/>
+                                <TableColumn fx:id="stuCourseCol"     text="Course"      prefWidth="180"/>
+                                <TableColumn fx:id="stuAvgCol"        text="Avg %"       prefWidth="90"/>
+                                <TableColumn fx:id="stuAttCol"        text="Attendance%" prefWidth="110"/>
+                                <TableColumn fx:id="stuRiskCol"       text="Risk Level"  prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

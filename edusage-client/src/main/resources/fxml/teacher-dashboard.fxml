@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.edusage.client.controller.TeacherDashController">
+
+    <!-- TOP NAV -->
+    <top>
+        <HBox style="-fx-background-color: #1A56A0; -fx-padding: 16;" alignment="CENTER_LEFT" spacing="20">
+            <Label text="EduSage FX" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+            <Label fx:id="welcomeLabel" style="-fx-text-fill: #D6E4F7; -fx-font-size: 14;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="totalStudentsLabel" style="-fx-text-fill: #D6E4F7;"/>
+            <Label fx:id="atRiskCountLabel" style="-fx-text-fill: #FEE2E2; -fx-font-weight: bold;"/>
+            <Button text="Leaderboard" onAction="#showLeaderboard"
+                    style="-fx-background-color: #1E7B45; -fx-text-fill: white;"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: #E07B20; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER CONTENT -->
+    <center>
+        <VBox spacing="16" style="-fx-padding: 24;">
+
+            <Label text="Class Overview" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1A56A0;"/>
+
+            <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="nameCol"       text="Name"        prefWidth="200"/>
+                    <TableColumn fx:id="rollNoCol"     text="Roll No"     prefWidth="120"/>
+                    <TableColumn fx:id="riskCol"       text="Risk Level"  prefWidth="150"/>
+                    <TableColumn fx:id="avgCol"        text="Avg %"       prefWidth="100"/>
+                    <TableColumn fx:id="attendanceCol" text="Attendance %" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>
